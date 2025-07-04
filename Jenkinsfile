@@ -4,16 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 dir('temperature-converter') {
-                    sh 'docker build -f Dockerfile.build -t build-container .'
-                    sh 'docker run --rm -v ${WORKSPACE}/temperature-converter:/app build-container mvn clean package -DskipTests'
+                    sh 'docker run --rm -v ${WORKSPACE}/temperature-converter:/app -w /app maven:3.9.6-eclipse-temurin-17 mvn clean package -DskipTests'
                 }
             }
         }
         stage('Test') {
             steps {
                 dir('temperature-converter') {
-                    sh 'docker build -f Dockerfile.test -t test-container .'
-                    sh 'docker run --rm -v ${WORKSPACE}/temperature-converter:/app test-container mvn test'
+                    sh 'docker run --rm -v ${WORKSPACE}/temperature-converter:/app -w /app maven:3.9.6-eclipse-temurin-17 mvn test'
                 }
             }
             post {
