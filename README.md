@@ -102,4 +102,4 @@ docker run --rm temperature-converter-test
 - ✅ Pipeline Jenkins funcional
 
 ## Autor
-Desenvolvido para a disciplina de Integração Contínua - 2025.1
+Desenvolvido para a disciplina Gerência de Configuração - 2025.1
