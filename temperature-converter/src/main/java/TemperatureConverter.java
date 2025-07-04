@@ -8,4 +8,9 @@ public class TemperatureConverter {
     public static double celsiusToFahrenheit(double c) {
         return (c * 9 / 5) + 32;
     }
+    
+    // Erro de sintaxe para demonstrar falha no build
+    public static void main(String[] args) {
+        System.out.println("Teste");
+    }
 } 

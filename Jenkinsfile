@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent {
                 dockerfile {
-                    filename 'temperature-converter/Dockerfile.build'
+                    filename 'Dockerfile.build'
                     dir 'temperature-converter'
                 }
             }
@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             agent {
                 dockerfile {
-                    filename 'temperature-converter/Dockerfile.test'
+                    filename 'Dockerfile.test'
                     dir 'temperature-converter'
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'temperature-converter/target/surefire-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }

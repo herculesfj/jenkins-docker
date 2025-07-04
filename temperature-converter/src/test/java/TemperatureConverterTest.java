@@ -15,4 +15,10 @@ public class TemperatureConverterTest {
         assertEquals(32.0, TemperatureConverter.celsiusToFahrenheit(0), 0.001);
         assertEquals(212.0, TemperatureConverter.celsiusToFahrenheit(100), 0.001);
     }
+    
+    @Test
+    public void testFailingTest() {
+        // Teste que falha para demonstrar build instável
+        assertEquals(50.0, TemperatureConverter.fahrenheitToCelsius(32), 0.001);
+    }
 } 
