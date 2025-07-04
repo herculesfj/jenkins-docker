@@ -9,12 +9,8 @@ public class TemperatureConverter {
         return (c * 9 / 5) + 32;
     }
     
-    // Erro de sintaxe para demonstrar falha no build
+    // Método main para demonstração
     public static void main(String[] args) {
         System.out.println("Teste");
-        // Erro de sintaxe intencional
-        if (true {
-            System.out.println("Erro de sintaxe");
-        }
     }
 } 

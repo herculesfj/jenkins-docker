@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven 3'
+    }
+    
+    triggers {
+        // Executar todos os dias às 02:00
+        cron('0 2 * * *')
+    }
+    
+    stages {
+        stage('Nightly Build') {
+            steps {
+                dir('temperature-converter') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
+        
+        stage('Nightly Test') {
+            steps {
+                dir('temperature-converter') {
+                    sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    junit 'temperature-converter/target/surefire-reports/*.xml'
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Nightly build completed at: ' + new Date()
+        }
+        success {
+            echo '✅ Nightly build successful!'
+        }
+        failure {
+            echo '❌ Nightly build failed!'
+        }
+    }
+} 
