@@ -12,5 +12,9 @@ public class TemperatureConverter {
     // Erro de sintaxe para demonstrar falha no build
     public static void main(String[] args) {
         System.out.println("Teste");
+        // Erro de sintaxe intencional
+        if (true {
+            System.out.println("Erro de sintaxe");
+        }
     }
 } 
