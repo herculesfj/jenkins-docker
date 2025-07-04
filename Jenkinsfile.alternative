@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven 3'
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                dir('temperature-converter') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                dir('temperature-converter') {
+                    sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    junit 'temperature-converter/target/surefire-reports/*.xml'
+                }
+            }
+        }
+    }
+} 

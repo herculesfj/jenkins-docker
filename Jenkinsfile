@@ -3,6 +3,12 @@ pipeline {
     
     stages {
         stage('Build in Docker Container') {
+            agent {
+                docker {
+                    image 'maven:3.9.6-eclipse-temurin-17'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 dir('temperature-converter') {
                     script {
@@ -17,6 +23,12 @@ pipeline {
         }
         
         stage('Test in Docker Container') {
+            agent {
+                docker {
+                    image 'maven:3.9.6-eclipse-temurin-17'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 dir('temperature-converter') {
                     script {
